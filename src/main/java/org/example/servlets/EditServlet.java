@@ -6,7 +6,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,36 +13,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static java.lang.Double.parseDouble;
 public class EditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/jsp/edit.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/jsp/editAdvertisement.jsp").forward(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try {
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
             Session session = sessionFactory.openSession();
             Transaction t = session.beginTransaction();
-            Query<Advertisement> query = session.createQuery("UPDATE Advertisement SET serviceName = :serNamParam," +
-                    "description =:descrpParam, " +
-                    "price = :priceParam, " +
-                    "contractorName = :contrNameParam, " +
-                    "phoneNumber = :phoNumParam WHERE id = :paramId", Advertisement.class);
-            query.setParameter("paramId", req.getParameter("id"));
-            query.setParameter("serNamParam", req.getParameter("serviceName"));
-            query.setParameter("descrpParam", req.getParameter("description"));
-            query.setParameter("priceParam", req.getParameter("price"));
-            query.setParameter("contrNameParam", req.getParameter("contractorName"));
-            query.setParameter("phoNumParam", req.getParameter("phoneNumber"));
-            query.executeUpdate();
-
-            session.update(query);
+            Advertisement advertisement = session.load(Advertisement.class, req.getParameter("id"));
+            advertisement.setServiceName(req.getParameter("serviceName"));
+            advertisement.setDescription(req.getParameter(req.getParameter("description")));
+            advertisement.setPrice(parseDouble(req.getParameter("price")));
+            advertisement.setContractorName(req.getParameter("contractorName"));
+            advertisement.setPhoneNumber(req.getParameter("phoneNumber"));
+            session.update(advertisement);
             t.commit();
         } catch (HibernateException he) {
             he.printStackTrace();
         }
-        getServletContext().getRequestDispatcher("/WEB-INF/jsp/advertisement.jsp").forward(req, resp);
+        resp.sendRedirect("/successfully");
     }
 }

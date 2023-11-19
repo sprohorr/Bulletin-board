@@ -5,7 +5,8 @@
     <title>Edit</title>
 </head>
 <body>
-<form method="post">
+<form action="${pageContext.request.contextPath}/editAdvertisement" method="post">
+    <input type="hidden" name="id" value="${id}">
     <p>Service name</p><input name="serviceName">
     <p>Description</p><input name="description">
     <p>Price</p><input name="price">

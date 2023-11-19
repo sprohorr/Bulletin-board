@@ -5,7 +5,7 @@
 </head>
 <body>
 <h2>Find reviews</h2>
-<form method="post">
+<form method="get">
     <p>Input number ad</p><input name="id">
     <button type="submit">search</button>
 </form>

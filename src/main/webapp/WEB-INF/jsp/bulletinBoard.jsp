@@ -12,23 +12,19 @@
 <h2>Bulletin board.</h2>
 <c:forEach var="list" items="${ad}">
     <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
             <form method="post">
                 <h5 class="card-title"><input value="${list.id}" name="id"></h5>
                 <p class="card-text">${list.serviceName}</p>
                 <button type="submit" class="btn btn-primary">Go to ad</button>
-                >
             </form>
         </div>
     </div>
 </c:forEach>
-
 <br/>
 <div>
-    <a href="/searchAd">Viewing ad</a><br/>
     <a href="/create">Create a new ad</a><br/>
-    <a href="/edit">Edit ad</a><br/>
+    <a href="/editAd">Edit ad</a><br/>
     <a href="/findReviews">Find reviews</a>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

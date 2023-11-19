@@ -5,7 +5,7 @@
     <title>Search ad</title>
 </head>
 <body>
-<form method="post">
+<form method="post" action="/searchAd">
     <h2>Input number ad</h2><input name="id">
     <br/>
     <button type="submit">Go</button>

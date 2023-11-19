@@ -1,8 +1,6 @@
 package org.example.entity;
 
 import javax.persistence.*;
-import java.util.Objects;
-
 @Entity
 @Table(name = "advertisement")
 public class Advertisement {
@@ -15,7 +13,7 @@ public class Advertisement {
     @Column(name = "description")
     private String description;
     @Column(name = "price")
-    private String price;
+    private Double price;
     @Column(name = "contractors_name")
     private String contractorName;
     @Column(name = "phone_number")
@@ -50,11 +48,11 @@ public class Advertisement {
         this.description = description;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -94,18 +92,4 @@ public class Advertisement {
                 ", avg=" + average +
                 '}';
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Advertisement that = (Advertisement) o;
-        return id == that.id && Double.compare(that.average, average) == 0 && Objects.equals(serviceName, that.serviceName) && Objects.equals(description, that.description) && Objects.equals(price, that.price) && Objects.equals(contractorName, that.contractorName) && Objects.equals(phoneNumber, that.phoneNumber);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, serviceName, description, price, contractorName, phoneNumber, average);
-    }
 }
-

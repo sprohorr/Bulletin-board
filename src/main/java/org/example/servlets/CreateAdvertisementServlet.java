@@ -13,31 +13,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class CreateServlet extends HttpServlet {
+public class CreateAdvertisementServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/WEB-INF/jsp/createNewAd.jsp").forward(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Advertisement advertisement = new Advertisement();
         try {
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
             Session session = sessionFactory.openSession();
             Transaction t = session.beginTransaction();
-
             advertisement.setServiceName(req.getParameter("serviceName"));
             advertisement.setDescription(req.getParameter("description"));
-            advertisement.setPrice(req.getParameter("price"));
+            advertisement.setPrice(Double.parseDouble(req.getParameter("price")));
             advertisement.setContractorName(req.getParameter("contractorName"));
             advertisement.setPhoneNumber(req.getParameter("phoneNumber"));
-
             session.save(advertisement);
             t.commit();
         } catch (HibernateException he) {
             he.printStackTrace();
         }
-        getServletContext().getRequestDispatcher("/WEB-INF/jsp/successfully.jsp").forward(req, resp);
+        resp.sendRedirect("/successfully");
     }
 }

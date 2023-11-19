@@ -11,8 +11,7 @@
             <td>${list.id}</td>
             <td>${list.userName}</td>
             <td>${list.description}</td>
-            <td>${list.grade}</td
-                <%--            <td>${list.date}</td>--%>
+            <td>${list.grade}</td>
             <td>${list.adId}</td>
         </tr>
         <br/>
@@ -20,6 +19,5 @@
 </table>
 <br/>
 <a href="/bulletinBoard">Return to back</a>
-
 </body>
 </html>

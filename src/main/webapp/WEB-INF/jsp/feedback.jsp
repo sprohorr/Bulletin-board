@@ -15,6 +15,5 @@
     <br/>
 </form>
 <a href="bulletinBoard.jsp">Return to back</a>
-
 </body>
 </html>

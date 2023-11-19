@@ -1,9 +1,7 @@
 package org.example.entity;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
-
 @Entity
 @Table(name = "feedback")
 public class Feedback {
@@ -17,10 +15,10 @@ public class Feedback {
     @Column(name = "grade")
     private double grade;
     @Column(name = "date")
-    private java.util.Date date;
+    private java.sql.Date date;
     @ManyToOne
     @JoinColumn(name = "ad_id")
-    private Advertisement adId;
+    private Advertisement ad;
 
     public Feedback() {
     }
@@ -28,27 +26,21 @@ public class Feedback {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public String getUserName() {
         return userName;
     }
-
     public void setUserName(String userName) {
         this.userName = userName;
     }
-
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
-
     public double getGrade() {
         return grade;
     }
@@ -57,19 +49,19 @@ public class Feedback {
         this.grade = grade;
     }
 
-    public Date getDate(java.util.Date date) {
+    public Date getDate(java.sql.Date date) {
         return this.date;
     }
 
-    public void setDate(LocalDateTime now) {
+    public void setDate(java.sql.Date date) {
         this.date = date;
     }
 
-    public Advertisement getAdId() {
-        return adId;
+    public Advertisement getAd() {
+        return ad;
     }
 
-    public void setAdId(Advertisement adId) {
-        this.adId = adId;
+    public void setAdId(int adId) {
+        this.ad = ad;
     }
 }

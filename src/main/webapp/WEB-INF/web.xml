@@ -9,7 +9,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>AdvertisementServlet</servlet-name>
-        <url-pattern>/searchAd</url-pattern>
+        <url-pattern>/advertisement</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>BulletinBoardServlet</servlet-name>
@@ -20,11 +20,11 @@
         <url-pattern>/bulletinBoard</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>CreateServlet</servlet-name>
-        <servlet-class>org.example.servlets.CreateServlet</servlet-class>
+        <servlet-name>CreateAdvertisementServlet</servlet-name>
+        <servlet-class>org.example.servlets.CreateAdvertisementServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>CreateServlet</servlet-name>
+        <servlet-name>CreateAdvertisementServlet</servlet-name>
         <url-pattern>/create</url-pattern>
     </servlet-mapping>
     <servlet>
@@ -33,23 +33,15 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>EditServlet</servlet-name>
-        <url-pattern>/editAd</url-pattern>
+        <url-pattern>/editAdvertisement</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>EditAdServlet</servlet-name>
-        <servlet-class>org.example.servlets.EditAdServlet</servlet-class>
+        <servlet-class>org.example.servlets.SearchAdForEditServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>EditAdServlet</servlet-name>
         <url-pattern>/edit</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>IntroServlet</servlet-name>
-        <servlet-class>org.example.servlets.IntroServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>IntroServlet</servlet-name>
-        <url-pattern>/intro</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>FeedbackAddServlet</servlet-name>
@@ -66,5 +58,13 @@
     <servlet-mapping>
         <servlet-name>FeedbackShowServlet</servlet-name>
         <url-pattern>/findReviews</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SuccessfullyAddServlet</servlet-name>
+        <servlet-class>org.example.servlets.SuccessfullyAddServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SuccessfullyAddServlet</servlet-name>
+        <url-pattern>/successfully</url-pattern>
     </servlet-mapping>
 </web-app>
