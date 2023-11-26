@@ -13,12 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static java.lang.Integer.parseInt;
+
 public class AdvertisementServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
-
         Query<Advertisement> query = session.createQuery("FROM Advertisement where id = :paramId", Advertisement.class);
         query.setParameter("paramId", req.getParameter("id"));
         Advertisement ad = query.getSingleResult();

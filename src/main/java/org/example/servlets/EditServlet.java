@@ -14,10 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static java.lang.Double.parseDouble;
+
 public class EditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/jsp/editAdvertisement.jsp").forward(req, resp);
+        req.setAttribute("id", req.getParameter("id"));
+        getServletContext().getRequestDispatcher("/WEB-INF/jsp/edit.jsp").forward(req, resp);
     }
 
     @Override
@@ -26,9 +28,9 @@ public class EditServlet extends HttpServlet {
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
             Session session = sessionFactory.openSession();
             Transaction t = session.beginTransaction();
-            Advertisement advertisement = session.load(Advertisement.class, req.getParameter("id"));
+            Advertisement advertisement = session.load(Advertisement.class, Integer.parseInt(req.getParameter("id")));
             advertisement.setServiceName(req.getParameter("serviceName"));
-            advertisement.setDescription(req.getParameter(req.getParameter("description")));
+            advertisement.setDescription(req.getParameter("description"));
             advertisement.setPrice(parseDouble(req.getParameter("price")));
             advertisement.setContractorName(req.getParameter("contractorName"));
             advertisement.setPhoneNumber(req.getParameter("phoneNumber"));

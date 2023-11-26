@@ -15,13 +15,8 @@
     <c:out value="Average rating:  ${ad.average}"></c:out><br/>
 </div>
 <br/>
-<div>
-    <form method="post" action="/feedback" name="feedback">
-        <input value="${ad.id}" name="id"/>
-        <button type="submit">feedback</button>
-    </form>
-</div>
-<a href="/editAdvertisement">edit</a>
+<a href="/feedback?id=${ad.id}">feedback</a>
+<a href="/editAdvertisement?id=${ad.id}">edit</a>
 <a href="/bulletinBoard">Return to back</a>
 </body>
 </html>

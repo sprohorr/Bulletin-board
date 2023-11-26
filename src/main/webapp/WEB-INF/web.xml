@@ -36,14 +36,6 @@
         <url-pattern>/editAdvertisement</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>EditAdServlet</servlet-name>
-        <servlet-class>org.example.servlets.SearchAdForEditServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>EditAdServlet</servlet-name>
-        <url-pattern>/edit</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>FeedbackAddServlet</servlet-name>
         <servlet-class>org.example.servlets.FeedbackAddServlet</servlet-class>
     </servlet>
@@ -57,7 +49,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>FeedbackShowServlet</servlet-name>
-        <url-pattern>/findReviews</url-pattern>
+        <url-pattern>/feedbackShow</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>SuccessfullyAddServlet</servlet-name>
@@ -66,5 +58,13 @@
     <servlet-mapping>
         <servlet-name>SuccessfullyAddServlet</servlet-name>
         <url-pattern>/successfully</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UnsuccessfullyServlet</servlet-name>
+        <servlet-class>org.example.servlets.UnsuccessfullyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UnsuccessfullyServlet</servlet-name>
+        <url-pattern>/unsuccessfully</url-pattern>
     </servlet-mapping>
 </web-app>

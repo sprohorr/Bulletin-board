@@ -12,19 +12,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+
 public class FeedbackShowServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/jsp/findReviews.jsp").forward(req, resp);
-    }
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        Session session = sessionFactory.openSession();
-        Query<Feedback> query = session.createQuery("FROM Feedback where ad =:paramId", Feedback.class);
+        Session session2 = sessionFactory.openSession();
+        Query<Feedback> query = session2.createQuery("FROM Feedback where ad =:paramId", Feedback.class);
         query.setParameter("paramId", req.getParameter("id"));
         List<Feedback> feedbacks = query.getResultList();
         req.setAttribute("feedbacks", feedbacks);
         getServletContext().getRequestDispatcher("/WEB-INF/jsp/feedbackShow.jsp").forward(req, resp);
     }
+
 }

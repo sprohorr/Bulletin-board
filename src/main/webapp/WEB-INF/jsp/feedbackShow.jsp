@@ -12,7 +12,8 @@
             <td>${list.userName}</td>
             <td>${list.description}</td>
             <td>${list.grade}</td>
-            <td>${list.adId}</td>
+            <td>${list.date}</td>
+            <td>${list.ad}</td>
         </tr>
         <br/>
     </c:forEach>
