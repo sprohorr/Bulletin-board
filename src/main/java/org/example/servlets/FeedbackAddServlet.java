@@ -33,7 +33,6 @@ public class FeedbackAddServlet extends HttpServlet {
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
             Session session = sessionFactory.openSession();
             Transaction t = session.beginTransaction();
-            Feedback paramId = session.load(Feedback.class, Integer.parseInt(req.getParameter("id")));
             Advertisement ad = session.load(Advertisement.class, parseInt(req.getParameter("id")));
             feedback.setAd(ad);
             feedback.setUserName(req.getParameter("userName"));
@@ -47,7 +46,7 @@ public class FeedbackAddServlet extends HttpServlet {
             Session sessionGetAVG = sessionFactoryGetAVG.openSession();
             Transaction transaction = sessionGetAVG.beginTransaction();
             Query queryAVG = sessionGetAVG.createQuery("SELECT AVG(grade) FROM Feedback where ad =:paramId");
-            queryAVG.setParameter("paramId", paramId);
+            queryAVG.setParameter("paramId", ad);
             Double avg = (Double) queryAVG.getSingleResult();
 
             Session sessionUpdate = sessionFactoryGetAVG.openSession();

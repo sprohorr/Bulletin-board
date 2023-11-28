@@ -17,8 +17,8 @@ public class FeedbackShowServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        Session session2 = sessionFactory.openSession();
-        Query<Feedback> query = session2.createQuery("FROM Feedback where ad =:paramId", Feedback.class);
+        Session session = sessionFactory.openSession();
+        Query<Feedback> query = session.createQuery("FROM Feedback where ad =:paramId", Feedback.class);
         query.setParameter("paramId", req.getParameter("id"));
         List<Feedback> feedbacks = query.getResultList();
         req.setAttribute("feedbacks", feedbacks);

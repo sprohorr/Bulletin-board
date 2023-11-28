@@ -23,9 +23,7 @@
 </c:forEach>
 <br/>
 <div>
-    <a href="/create">Create a new ad</a><br/>
-    <a href="/editAd">Edit ad</a><br/>
-    <a href="/findReviews">Find reviews</a>
+    <a href="/create"><h2>Create a new ad</h2></a><br/>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
